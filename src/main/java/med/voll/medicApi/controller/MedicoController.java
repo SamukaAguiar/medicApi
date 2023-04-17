@@ -12,8 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("medicos")
 public class MedicoController {
@@ -23,12 +21,12 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void insert(@RequestBody @Valid Medicos medico){
+    public void setMedicos(@RequestBody @Valid Medicos medico){
         repository.save(new Medico(medico));
     }
 
     @GetMapping
-    public Page<MedicosDTO> listar(@PageableDefault(size = 10, sort = {"nome", "crm"}) Pageable page){
+    public Page<MedicosDTO> getMedicos(@PageableDefault(size = 10, sort = {"nome", "crm"}) Pageable page){
         return repository.findAll(page).map(MedicosDTO::new);
     }
 }

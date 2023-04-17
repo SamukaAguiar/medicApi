@@ -1,7 +1,9 @@
 package med.voll.medicApi.paciente;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.medicApi.endereco.Enderecos;
 
@@ -17,6 +19,7 @@ public record Pacientes(
         @NotBlank
         @Pattern(regexp = "\\(?\\d{2,}\\)?[ -]?\\d{4,}[\\-\\s]?\\d{4}")
         String telefone,
-        Enderecos endereco
-) {
+        @NotNull
+        @Valid
+        Enderecos endereco ) {
 }
