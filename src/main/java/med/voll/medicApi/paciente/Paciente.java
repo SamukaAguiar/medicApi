@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.medicApi.endereco.Endereco;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Getter
 @EqualsAndHashCode(of = "id")
@@ -27,11 +26,29 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    public Paciente(Pacientes paciente){
+    private boolean ativo;
+
+    public Paciente(PacienteDtoCreate paciente){
         this.nome = paciente.nome();
-        this.email = paciente.email();;
+        this.email = paciente.email();
         this.cpf = paciente.cpf();
         this.telefone = paciente.telefone();
         this.endereco = new Endereco(paciente.endereco());
+        this.ativo = true;
+    }
+
+    public void updatePaciente(PacienteDtoUpdate paciente) {
+        if (paciente.nome() != null)
+            this.nome = paciente.nome();
+
+        if (paciente.telefone() != null)
+            this.telefone = paciente.telefone();
+
+        if (paciente.endereco() != null)
+            this.endereco.updateEndereco(paciente.endereco());
+    }
+
+    public void deletePaciente() {
+        this.ativo = false;
     }
 }

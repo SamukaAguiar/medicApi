@@ -24,7 +24,7 @@ public class MedicoController {
 
     @GetMapping
     public Page<MedicoDtoGetAll> getMedicos(@PageableDefault(size = 10, sort = {"nome", "crm"}) Pageable page){
-        return repository.findAllByAtivoTrue(page).map(MedicoDtoGetAll::new);
+    return repository.findAllByAtivoTrue(page).map(MedicoDtoGetAll::new);
     }
 
     @PutMapping
