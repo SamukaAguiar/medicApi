@@ -28,6 +28,8 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private boolean ativo;
+
     public Medico(MedicoDtoCreate medico) {
         this.nome = medico.nome();
         this.email = medico.email();
@@ -35,6 +37,7 @@ public class Medico {
         this.crm = medico.crm();
         this.especialidade = medico.especialidade();
         this.endereco = new Endereco(medico.endereco());
+        this.ativo = true;
     }
 
     public void updateMedico(MedicoDtoUpdate medicoPar) {
@@ -46,5 +49,9 @@ public class Medico {
 
         if (medicoPar.endereco() != null)
             this.endereco.updateEndereco(medicoPar.endereco());
+    }
+
+    public void deleteMedico(){
+        this.ativo = false;
     }
 }
