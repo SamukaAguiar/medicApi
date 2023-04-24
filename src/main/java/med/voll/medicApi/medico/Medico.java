@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.medicApi.endereco.Endereco;
-import med.voll.medicApi.endereco.Enderecos;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
@@ -29,12 +28,23 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
-    public Medico(Medicos medico) {
+    public Medico(MedicoDtoCreate medico) {
         this.nome = medico.nome();
         this.email = medico.email();
         this.telefone = medico.telefone();
         this.crm = medico.crm();
         this.especialidade = medico.especialidade();
         this.endereco = new Endereco(medico.endereco());
+    }
+
+    public void updateMedico(MedicoDtoUpdate medicoPar) {
+        if (medicoPar.nome() != null)
+            this.nome = medicoPar.nome();
+
+        if (medicoPar.telefone() != null)
+            this.telefone = medicoPar.telefone();
+
+        if (medicoPar.endereco() != null)
+            this.endereco.updateEndereco(medicoPar.endereco());
     }
 }

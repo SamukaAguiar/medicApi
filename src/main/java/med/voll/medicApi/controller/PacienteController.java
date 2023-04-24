@@ -2,9 +2,6 @@ package med.voll.medicApi.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.voll.medicApi.medico.Medico;
-import med.voll.medicApi.medico.Medicos;
-import med.voll.medicApi.medico.MedicosDTO;
 import med.voll.medicApi.paciente.Paciente;
 import med.voll.medicApi.paciente.PacienteRepository;
 import med.voll.medicApi.paciente.Pacientes;

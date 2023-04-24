@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.medicApi.endereco.Enderecos;
+import med.voll.medicApi.endereco.EnderecoDto;
 
 public record Pacientes(
         @NotBlank
@@ -21,5 +21,5 @@ public record Pacientes(
         String telefone,
         @NotNull
         @Valid
-        Enderecos endereco ) {
+        EnderecoDto endereco ) {
 }
