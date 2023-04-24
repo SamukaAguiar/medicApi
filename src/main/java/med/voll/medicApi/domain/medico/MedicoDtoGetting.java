@@ -1,6 +1,6 @@
-package med.voll.medicApi.medico;
+package med.voll.medicApi.domain.medico;
 
-public record MedicoDtoGetAll(
+public record MedicoDtoGetting(
         Long id,
         String nome,
         String email,
@@ -8,7 +8,7 @@ public record MedicoDtoGetAll(
         Especialidade especialidade
     ) {
 
-    public MedicoDtoGetAll(Medico medico){
+    public MedicoDtoGetting(Medico medico){
         this(medico.getId(), medico.getNome(), medico.getEmail(), medico.getCrm(), medico.getEspecialidade());
     }
 }
