@@ -3,6 +3,7 @@ package med.voll.medicApi.infa.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import med.voll.medicApi.domain.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class TokenService {
             var algoritmo = Algorithm.HMAC256(this.secret);
 
             return JWT.create()
-                    .withIssuer("API Voll Med")
+                    .withIssuer("API Voll.Med")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dtaExpiracao())
                     .withClaim("id", usuario.getId())
@@ -30,6 +31,20 @@ public class TokenService {
 
         }catch (JWTCreationException e){
             throw new RuntimeException("Erro ao gerar o token JWT", e);
+        }
+    }
+
+    public String getSubject(String tokenJwt){
+        try {
+            var algoritmo = Algorithm.HMAC256(this.secret);
+            return JWT.require(algoritmo)
+                    .withIssuer("API Voll.Med")
+                    .build()
+                    .verify(tokenJwt)
+                    .getSubject();
+
+        } catch (JWTVerificationException exception){
+            throw new RuntimeException("Token JWT inválido ou expirou!");
         }
     }
 
