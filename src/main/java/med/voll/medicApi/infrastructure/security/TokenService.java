@@ -1,4 +1,4 @@
-package med.voll.medicApi.infa.security;
+package med.voll.medicApi.infrastructure.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

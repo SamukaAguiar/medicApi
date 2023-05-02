@@ -1,9 +1,8 @@
-package med.voll.medicApi.infa.security;
+package med.voll.medicApi.infrastructure.security;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import med.voll.medicApi.domain.usuario.Usuario;
 import med.voll.medicApi.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package med.voll.medicApi.infa.exception;
+package med.voll.medicApi.infrastructure.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import med.voll.medicApi.domain.exceptions.ValidacaoException;
