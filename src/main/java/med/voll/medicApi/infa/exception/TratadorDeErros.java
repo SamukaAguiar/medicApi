@@ -1,6 +1,7 @@
 package med.voll.medicApi.infa.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import med.voll.medicApi.domain.exceptions.ValidacaoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class TratadorDeErros {
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity tratarErroRegraNegocio(ValidacaoException ex){
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity tratarErro404() {
