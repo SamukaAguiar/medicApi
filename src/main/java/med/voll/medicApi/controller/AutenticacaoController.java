@@ -1,5 +1,6 @@
 package med.voll.medicApi.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.medicApi.domain.usuario.AutenticacaoDtoCreate;
 import med.voll.medicApi.domain.usuario.Usuario;

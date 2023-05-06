@@ -1,7 +1,5 @@
 package med.voll.medicApi.domain.consulta;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import med.voll.medicApi.domain.medico.Medico;
